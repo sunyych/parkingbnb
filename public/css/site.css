@@ -1,0 +1,42 @@
+
+
+
+.form-well {
+	height: 180px;
+	width: 60%;
+	text-align: center;
+	
+	left: 20%;
+}
+.form-well div {
+	text-align: center;
+	width: 35%;
+	padding: 0;
+	display: inline-block;
+}
+.login-inner-form {
+	position: absolute;
+	top: 20%;
+	width: 100%;
+}
+
+#button-group {
+	text-align: center;
+	width: 100%;
+	margin: 0;
+}
+
+.form-well div label {
+	color: rgb(30, 0, 0);
+}
+
+#createLink p {
+	color: rgb(0, 0, 0);
+	font-size: 15px;
+	margin: 0;
+	text-align: center;
+}
+
+#myModalLabel {
+	color: rgb(0, 0, 0);
+}

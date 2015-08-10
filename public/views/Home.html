@@ -1,4 +1,4 @@
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="HomeController as vm">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 	
 	<!-- Navigation -->
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" ng-controller="NavCtrl as nav">
@@ -29,7 +29,10 @@
 						<a class="page-scroll" ng-click="nav.scrollTo('#contact')">Contact</a>
 					</li>
 					<li>
-						<a data-toggle="modal" data-target="#myModal">Log in</a>
+						<a data-toggle="modal" data-target="#login">Log in</a>
+					</li>
+					<li>
+						<a data-toggle="modal" data-target="#signup">Sign up</a>
 					</li>
 				</ul>
 
@@ -39,41 +42,87 @@
 		<!-- /.container -->
 	</nav>
 
-	<!-- login modal window -->
-	<div ng-controller="loginCtrl as log">
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Log in</h4>
-					</div>
-					<div class="modal-body">
-						<div class="hcenter">
-							<div class="form-well vcenter">
-								<form ng-submit="nav.login()" class="login-inner-form" novalidate>
-									<div class="form-group">
-										<label>Username</label>
-										<input class="form-control inputBox" ng-model="log.user.username" placeholder="username...">
-									</div>
-									<div class="form-group">
-										<label>Password</label>
-										<input class="form-control inputBox" type="password" ng-model="log.user.password" placeholder="password...">
-									</div>
-									<div id="button-group">
-										
-										<button type="submit" class="btn btn-lg btn-success" ng-disabled="!log.user.password || !log.user.username">Submit</button>
-									</div>									
-								</form>
+	<!-- login modal window controlled by userCtrl-->
+	<div ng-controller="userCtrl as usr">
+		<div>
+			<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Log in</h4>
+						</div>
+						<div class="modal-body">
+							<div class="hcenter">
+								<div class="form-well vcenter">
+									<form ng-submit="usr.login()" class="login-inner-form" novalidate>
+										<div class="form-group">
+											<label>Username</label>
+											<input class="form-control inputBox" ng-model="usr.user.username" placeholder="username...">
+										</div>
+										<div class="form-group">
+											<label>Password</label>
+											<input class="form-control inputBox" type="password" ng-model="usr.user.password" placeholder="password...">
+										</div>
+										<div id="button-group">
+											<button type="submit" class="btn btn-lg btn-success" ng-disabled="!usr.user.password || !usr.user.username">Submit</button>
+										</div>									
+									</form>
+								</div>
 							</div>
+							
 						</div>
-						<div id="createLink">
-							<p>Don't have an account? <a ui-sref="Register">Create an account</a></p>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Login with Facebook</button>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Login with Facebook</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- signup modal window controlled by userCtrl-->
+		<div>
+			<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Sign up</h4>
+						</div>
+						<div class="modal-body">
+							<div class="hcenter">
+								<div class="form-well vcenter">
+									<form ng-submit="usr.signup()" class="register-inner-form" novalidate>
+										<div class="form-group">
+											<label>Username</label>
+											<input class="form-control" placeholder="Username..." ng-model="usr.user.username" required />
+										</div>
+										<div class="form-group">
+											<label>Email</label>
+											<input class="form-control" placeholder="Email..." ng-model="usr.user.email" type="email" required />
+										</div>
+										<div class="form-group">
+											<label>Password</label>
+											<input class="form-control" type="password" placeholder="Password..." ng-model="usr.user.password" required />
+										</div>
+										<div class="form-group">
+											<label>Confirm Password</label>
+											<input class="form-control" type="password" placeholder="Confirm Password..." ng-model="usr.user.cpassword" required />
+										</div>
+										<div id="button-group">
+											<a ui-sref="Login" class="btn btn-primary">Login</a>
+											<button type="submit" class="btn btn-success" ng-disabled="!usr.user.username || !usr.user.email || !usr.user.password || !usr.user.cpassword || !(usr.user.password === usr.user.cpassword)">Submit</button>
+										</div>								
+									</form>
+								</div>
+							</div>
+							
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Login with Facebook</button>
+						</div>
 					</div>
 				</div>
 			</div>

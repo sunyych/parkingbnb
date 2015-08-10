@@ -1,8 +1,5 @@
-
-
-
 .form-well {
-	height: 180px;
+	height: 300px;
 	width: 60%;
 	text-align: center;
 	
@@ -39,4 +36,11 @@
 
 #myModalLabel {
 	color: rgb(0, 0, 0);
+}
+
+.register-inner-form {
+	position: absolute;
+	top: 25%;
+	width: 100%;
+	margin-top: 0;
 }

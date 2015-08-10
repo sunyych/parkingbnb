@@ -3,10 +3,15 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = [];
+	HomeController.$inject = ['HomeFactory'];
 
-	function HomeController() {
+	function HomeController(HomeFactory) {
 		var vm = this;
-		vm.title = 'Welcome to our App!';
+		vm.spots = HomeFactory.spots;
+		vm.deleteSpot = deleteSpot;
+
+		function deleteSpot(spt) {
+			HomeFactory.removeSpot(spt);
+		}
 	}
 })();

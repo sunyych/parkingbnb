@@ -177,10 +177,9 @@
         }]
     };
     vm.search = function() {
-    	// HomeFactory.search(geocoder).then(function(data){
-    	// 	console.log(data);
-    	// 	vm.map.setCenter(data.geometry.location);
-    	// });
+    	HomeFactory.search(geocoder).then(function(data){
+    		vm.map.setCenter(data.geometry.location);
+    	});
     };
 
     // Get the HTML DOM element that will contain your map 
@@ -193,11 +192,7 @@
     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
     vm.image = 'bootstrap/img/map-marker.png';
     var myLatLng = new google.maps.LatLng(37.775, -122.419);
-    var beachMarker = new google.maps.Marker({
-    	position: myLatLng,
-    	map: vm.map,
-    	icon: vm.image
-    });
+    
 }
 
 function codeAddress() {

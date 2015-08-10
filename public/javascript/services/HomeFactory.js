@@ -10,12 +10,30 @@
 		o.spots = [];
 		o.upload = upload;
 		o.removeSpot = removeSpot;
+		o.search = search;
 		$http.get('/api/Spot').success(function(res) {
 			for(var i = 0; i < res.length; i++) {
 				o.spots.push(res[i]);
 			}
 		});
 		return o;
+
+		function search(geocoder) {
+			var q = $q.defer();
+			var address = document.getElementById("address").value;
+			geocoder.geocode( {'address': address}, function(results, status) {
+
+				if (status == google.maps.GeocoderStatus.OK) {
+					q.resolve(results[0]);
+					//vm.map.setCenter(results[0].geometry.location);
+				} else {
+					alert('Geocode was not successful for the following reason: ' + status);
+					q.reject();
+				}
+			});
+			return q.promise;
+
+		}
 
 		function upload(spot) {
 

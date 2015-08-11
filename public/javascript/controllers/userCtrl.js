@@ -8,8 +8,8 @@
 	function userCtrl(UserFactory, $state) {
 		var vm = this;
 		vm.user = {};
-		vm.status = UserFactory.status;
-		vm.status.isopen=false;
+		
+		
 		vm.signup=signup;
 		vm.login=login;
 		

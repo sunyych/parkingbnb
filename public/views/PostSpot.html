@@ -12,8 +12,8 @@
 		</div>
 
 		<div class="form-group">
-			<label>Car size</label>
-			<input class="form-control" ng-model="po.spot.size" placeholder="Car size...">
+			<label>Size</label>
+			<input class="form-control" ng-model="po.spot.size" placeholder="Size...">
 		</div>
 
 		<div class="form-group">
@@ -21,7 +21,7 @@
 			<input class="form-control" ng-model="po.spot.time" placeholder="Available from...">
 		</div>
 		<div class="form-group">
-			<label>Rate/hr</label>
+			<label>Rate/day</label>
 			<div class="input-group">
 				<span class="input-group-addon" id="sizing-addon2">$</span>
 				<input type="text" class="form-control" ng-model="po.spot.rate" aria-describedby="sizing-addon2">
@@ -35,9 +35,9 @@
 		<br/>
 		<input type="radio" ng-model="po.spot.type" name="type" ng-model="po.spot.type" value="garage"> Garage
 		<br/>
-		<input type="radio" ng-model="po.spot.type" name="type" ng-model="po.spot.type" value="streetParking"> Street Parking
+		<input type="radio" ng-model="po.spot.type" name="type" ng-model="po.spot.type" value="streetParking"> Street 
 		<br/>
-		<input type="radio" ng-model="po.spot.type" name="type" ng-model="po.spot.type" value="driveWay"> Drive way
+		<input type="radio" ng-model="po.spot.type" name="type" ng-model="po.spot.type" value="driveWay"> Yard
 	</form>
 	<br/>
 	<form  class="container" ng-submit="po.upload()">

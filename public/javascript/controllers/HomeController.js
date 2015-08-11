@@ -11,9 +11,9 @@
 		vm.deleteSpot = deleteSpot;
 		vm.codeAddress = codeAddress;
 		vm.status = UserFactory.status;
+        vm.status.isopen=false;
 		vm.logout = UserFactory.logout;
-
-
+        
         function deleteSpot(spt) {
          HomeFactory.removeSpot(spt);
      }
@@ -189,7 +189,7 @@ function codeAddress() {
 		geocoder.geocode( { address: address}, function(results, status) {
 			
 			if (status == google.maps.GeocoderStatus.OK && results.length>0) {
-				vm.map.setCenter(results[0].geometry.location);
+				// vm.map.setCenter(results[0].geometry.location);
 				var marker = new google.maps.Marker({
 					map: vm.map,
 					position: results[0].geometry.location,

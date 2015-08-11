@@ -18,4 +18,23 @@
 		});
 		$urlRouterProvider.otherwise('/');
 	}
+
+
+	auth.$inject = ['$rootScope', '$location', '$state', 'UserFactory'];
+
+	function auth($rootScope, $location, $state, UserFactory) {
+		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+			var isLogin = toState.name === "Login";
+			var isRegister = toState.name === 'Register';
+			if (isLogin || isRegister) {
+        return; // no need to redirect
+    }
+      // now, redirect only not authenticated
+      var userInfo = UserFactory.status;
+      if (userInfo.isLoggedIn === false) {
+        e.preventDefault(); // stop current execution
+        $state.go('Login'); // go to login
+    }
+});
+	}
 })();

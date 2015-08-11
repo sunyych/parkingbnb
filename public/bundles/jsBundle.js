@@ -18,8 +18,26 @@
 		});
 		$urlRouterProvider.otherwise('/');
 	}
-})();
 
+
+	auth.$inject = ['$rootScope', '$location', '$state', 'UserFactory'];
+
+	function auth($rootScope, $location, $state, UserFactory) {
+		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+			var isLogin = toState.name === "Login";
+			var isRegister = toState.name === 'Register';
+			if (isLogin || isRegister) {
+        return; // no need to redirect
+    }
+      // now, redirect only not authenticated
+      var userInfo = UserFactory.status;
+      if (userInfo.isLoggedIn === false) {
+        e.preventDefault(); // stop current execution
+        $state.go('Login'); // go to login
+    }
+});
+	}
+})();
 (function() {
 	'use strict';
 	angular.module('app')
@@ -33,9 +51,9 @@
 		vm.deleteSpot = deleteSpot;
 		vm.codeAddress = codeAddress;
 		vm.status = UserFactory.status;
+        vm.status.isopen=false;
 		vm.logout = UserFactory.logout;
-
-
+        
         function deleteSpot(spt) {
          HomeFactory.removeSpot(spt);
      }
@@ -211,7 +229,7 @@ function codeAddress() {
 		geocoder.geocode( { address: address}, function(results, status) {
 			
 			if (status == google.maps.GeocoderStatus.OK && results.length>0) {
-				vm.map.setCenter(results[0].geometry.location);
+				// vm.map.setCenter(results[0].geometry.location);
 				var marker = new google.maps.Marker({
 					map: vm.map,
 					position: results[0].geometry.location,
@@ -261,6 +279,34 @@ function codeAddress() {
     }
   }
 })();
+angular.module('app').controller('TestCtrl', ["$scope", "$modal", function ($scope, $modal) {
+
+  $scope.open = function (spot) {
+
+    var modalInstance = $modal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'spotModal.html',
+      controller: 'ModalInstanceCtrl',
+      resolve: {
+        spot: function () {
+          return spot;
+        }
+      }
+    });
+  };
+}]);
+
+angular.module('app').controller('ModalInstanceCtrl', ["$scope", "$modalInstance", "spot", function ($scope, $modalInstance, spot) {
+  $scope.spot = spot;
+
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
 (function() {
 	'use strict';
 	angular.module('app')
@@ -271,8 +317,8 @@ function codeAddress() {
 	function userCtrl(UserFactory, $state) {
 		var vm = this;
 		vm.user = {};
-		vm.status = UserFactory.status;
-		vm.status.isopen=false;
+		
+		
 		vm.signup=signup;
 		vm.login=login;
 		

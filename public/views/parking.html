@@ -1,3 +1,4 @@
+
 <div ng-controller="HomeController as vm">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -9,7 +10,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" ui-sref="Home">ParkGSD</a>
+        <a class="navbar-brand" ui-sref="Home">spacesharer</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,11 +45,61 @@
   </div>
   <div id="map"></div>
 
-  
+
   <!--  spots display Section -->
-  <div class="col-sm-4 well container" ng-repeat="i in vm.spots">
-    <img ng-src="{{i.img}}" class="img-responsive img-rounded" />
-    <a class="delete-picture" ng-show="i.user.username === nav.status.username" ng-click="vm.deleteSpot(i)">X</a>
-    <i>by: {{i.user.username}}</i>
-  </div>
-</div>
+  
+  <div id="wrapper">
+    <div id="columns">
+      <div class="pin" ng-repeat="i in vm.spots">
+        <button class="btn btn-danger btn-xs" ng-show="i.user.username === vm.status.username" ng-click="vm.deleteSpot(i)">X</button>
+        <a data-toggle="modal" data-target="#spotModal">
+          <img ng-src="{{i.img}}" class="img-responsive img-rounded" />
+        </a>
+        <p>{{i.address}}</p>
+        <p>${{i.rate}}/day</p>
+        <i>by: {{i.user.username}}</i>
+
+
+
+
+        <!--  spot modal -->
+
+        
+        <div class="modal fade" id="spotModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 id="spotModalTitle" class="modal-title">Contact Poster</h4>
+              </div>
+              <div class="modal-body">
+                <form id="contact_form" >
+                  <div class="row">
+                    <label for="name" style="color: grey">Your name:</label><br />
+                    <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+                  </div>
+                  <div class="row">
+                    <label for="email" style="color: grey">Your email:</label><br />
+                    <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+                  </div>
+                  <div class="row">
+                    <label for="message" style="color: grey">Your message:</label><br />
+                    <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+                  </div>
+
+                </form>           
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Contact</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+      </div><!--  pin ng-repeat end -->
+    </div> <!-- columns end -->
+  </div> <!-- wrapper end -->
+</div><!--  homeController end -->
+

@@ -44,7 +44,14 @@
 	width: 100%;
 	margin-top: 0;
 }
-
+.delete-picture {
+	position: absolute;
+	color: white;
+	font-size: 32;
+	right: 30px;
+	top: 30px;
+	cursor: pointer;
+}
 #address {
 	width: 350px;
 }
@@ -52,10 +59,13 @@
 #panel {
 	position: absolute;
 	top: 80px;
-	left: 97%;
+	left: 96%;
 	margin-left: -180px;
 	z-index: 5;
-	background-color: #fff;
 	padding: 5px;
 	border: 1px solid #999;
+}
+
+#submitButton {
+	margin-top: 8px;
 }

@@ -34,7 +34,7 @@
 		vm.codeAddress = codeAddress;
 		vm.status = UserFactory.status;
 		vm.logout = UserFactory.logout;
-        
+
 
         function deleteSpot(spt) {
          HomeFactory.removeSpot(spt);
@@ -184,6 +184,8 @@
     		vm.map.setCenter(data.geometry.location);
             // should zoom in when search a location
             // vm.map.fitBounds(data.geometry.location);
+            var bounds = new google.maps.LatLngBounds(data.geometry.location);
+            vm.map.fitBounds(bounds);
         });
     };
 

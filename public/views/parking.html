@@ -22,7 +22,7 @@
         </form>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><button class="btn btn-primary" ui-sref="postSpot">Post Your Spot</a></li>
+          <li><button class="btn btn-success" id="submitButton" ui-sref="postSpot">Post Your Spot</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{vm.status.username}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -38,11 +38,9 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-
-
   <!-- Map Section -->
   <div id="panel">
-    <button  class="btn btn default" ng-click="vm.codeAddress()">show spots</button>
+    <button  class="btn btn-primary btn-lg" ng-click="vm.codeAddress()">show spots</button>
   </div>
   <div id="map"></div>
 

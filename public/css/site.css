@@ -44,3 +44,18 @@
 	width: 100%;
 	margin-top: 0;
 }
+
+#address {
+	width: 350px;
+}
+
+#panel {
+	position: absolute;
+	top: 80px;
+	left: 97%;
+	margin-left: -180px;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #999;
+}

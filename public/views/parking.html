@@ -41,9 +41,12 @@
 
 
   <!-- Map Section -->
+  <div id="panel">
+    <button  class="btn btn default" ng-click="vm.codeAddress()">show spots</button>
+  </div>
   <div id="map"></div>
 
-  <button  class="btn btn default" ng-click="vm.codeAddress()">show spots</button>
+  
   <!--  spots display Section -->
   <div class="col-sm-4 well container" ng-repeat="i in vm.spots">
     <img ng-src="{{i.img}}" class="img-responsive img-rounded" />

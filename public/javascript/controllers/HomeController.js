@@ -12,10 +12,11 @@
 		vm.codeAddress = codeAddress;
 		vm.status = UserFactory.status;
 		vm.logout = UserFactory.logout;
+        
 
-		function deleteSpot(spt) {
-			HomeFactory.removeSpot(spt);
-		}
+        function deleteSpot(spt) {
+         HomeFactory.removeSpot(spt);
+     }
 
 		// map function
 		google.maps.event.addDomListener(window, 'load', init);
@@ -154,10 +155,14 @@
         	}]
         }]
     };
+
+
     vm.search = function() {
     	HomeFactory.search(geocoder).then(function(data){
     		vm.map.setCenter(data.geometry.location);
-    	});
+            // should zoom in when search a location
+            // vm.map.fitBounds(data.geometry.location);
+        });
     };
 
     // Get the HTML DOM element that will contain your map 
@@ -168,7 +173,7 @@
     vm.map = new google.maps.Map(mapElement, mapOptions);
     
     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
-    vm.image = 'bootstrap/img/map-marker.png';
+    vm.image = 'bootstrap/img/map_marker-512.png';
     var myLatLng = new google.maps.LatLng(37.775, -122.419);
     
 }

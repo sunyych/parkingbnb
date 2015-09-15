@@ -1,0 +1,22 @@
+{
+  "name": "partingbnb",
+  "version": "0.0.1",
+  "homepage": "https://github.com/snoopy223/parkingbnb",
+  "authors": [
+    "Steven Sun <steven@parthenonsoftware.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "gray": "grayscale#~0.0.6",
+    "jquery.easing": "~1.3.1"
+  }
+}
